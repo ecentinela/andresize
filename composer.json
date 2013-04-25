@@ -1,0 +1,11 @@
+{
+    "require": {
+    	"filp/whoops": "1.*",
+    	"imagine/imagine": "dev-master",
+    	"mheap/Silex-Assetic": "dev-master@dev",
+        "silex/silex": "1.0.*@dev",
+        "symfony/translation": "~2.1",
+        "twig/twig": ">=1.8,<2.0-dev",
+        "symfony/twig-bridge": "~2.1"
+    }
+}

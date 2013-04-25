@@ -1,0 +1,7 @@
+cache
+vendor
+web/css
+web/js
+web/components
+web/downloads
+.DS_Store

@@ -1,0 +1,117 @@
+// MIXINS
+// ------
+
+size(numbers...)
+  if length(numbers) > 1
+
+    width-unit = unit(numbers[0]) == '' ? 'px' : unit(numbers[0])
+    height-unit = unit(numbers[1]) == '' ? 'px' : unit(numbers[1])
+
+    width: unit(numbers[0], width-unit)
+    height: unit(numbers[1], height-unit)
+  else
+
+    size-unit = unit(numbers) == '' ? 'px' : unit(numbers)
+
+    width: unit(numbers, size-unit)
+    height: unit(numbers, size-unit)
+
+// FONT-FACE
+// ---------
+@font-face {
+    font-family Roboto
+    font-style normal
+    src url("../fonts/Roboto-Thin.ttf")
+}
+
+@font-face {
+    font-family Roboto
+    font-style normal
+    src url("../fonts/Roboto-Black.ttf")
+    font-weight bold
+}
+
+// STYLES
+// ------
+
+body
+    background url("../images/bg.png")
+
+header
+    background url("../images/header.png")
+    color white
+    box-shadow 0 -4px 20px rgba(0, 0, 0, 0.27) inset
+
+    #logo
+        height 88px
+        margin 27px 0 39px 10px
+
+        h2,
+        h4
+            text-shadow 1px 1px 1px #1c5934
+
+        h4
+            color #eee
+            margin-left 10px
+
+    #image
+        background url("../images/image.png")
+        margin-left 52px
+        size 265 305
+
+footer
+    font-size 16px
+    color #999
+    padding 20px 0
+
+#body
+    .container
+        margin 0 auto
+        overflow hidden
+        padding 40px 0
+
+    li
+        margin-left 64px
+        position relative
+        -webkit-transform translateY(-2000px)
+        -moz-transform translateY(-2000px)
+        -o-transform translateY(-2000px)
+        transform translateY(-2000px)
+
+    a
+        display block
+
+    span
+        color #fff
+        font-size 32px
+        font-weight bold
+        margin-top 60px
+        position absolute
+        text-align center
+        text-shadow 3px 3px 1px #555
+        width 100%
+
+    img
+        size 150 150
+
+#fileinput-button
+    display block
+    font-size 28px
+    margin 42px 0
+    overflow hidden
+    position relative
+    text-decoration underline
+
+    &.hide
+        display none
+
+    input
+        cursor pointer
+        opacity 0
+        position absolute
+        right 0
+        top 0
+        transform translate(-720px, 0px) scale(4)
+
+#progress
+    margin-top 54px

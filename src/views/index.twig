@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ "title" | trans }}</title>
+
+    {% stylesheets output="css/animate.css" "components/animate.css/animate.min.css" %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
+    {% stylesheets filter="less" output="css/bootstrap.css" "../src/assets/index.less" %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
+    {% stylesheets filter="stylus" output="css/index.css" "../src/assets/index.styl" %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
+    {% javascripts filter="closure" output="js/vendor.js"
+        "components/jquery/jquery.js"
+        "components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"
+        "components/blueimp-file-upload/js/jquery.fileupload.js"
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+
+    {% javascripts filter="coffee" output="js/index.js" "../src/assets/index.coffee" %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="pull-left">
+                    <div id="logo">
+                        <h2 class="pull-left">Image Resizer</h2>
+                        <h4 class="pull-left">For Android</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span5">
+                    <div id="image"></div>
+                </div>
+
+                <div class="span7">
+                    <h3>{{ "resize_your_images" | trans }}</h3>
+
+                    <p>{{ "upload_a_file" | trans | raw }}</p>
+
+                    <p>{{ "wait_for_downloads" | trans | raw }}</p>
+
+                    <span id="fileinput-button">
+                        {{ "select_zip_file" | trans | raw }}
+                        <input id="fileupload" type="file" name="file" data-url="/upload/{{ hash }}" data-check="/status/{{ hash }}" />
+                    </span>
+
+                    <div id="progress" class="progress progress-striped active hide">
+                        <div class="bar bar-success" style="width:50%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="body">
+        <div class="container">
+            <ul class="unstyled">
+                <li id="xhdpi" class="pull-left animated">
+                    <a href="/downloads/{{ hash }}_xhdpi.zip">
+                        <span>XHDPI</span>
+                        <img src="/images/circle.png" alt="xhdpi" />
+                    </a>
+                </li>
+
+                <li id="hdpi" class="pull-left animated">
+                    <a href="/downloads/{{ hash }}_hdpi.zip">
+                        <span>HDPI</span>
+                        <img src="/images/circle.png" alt="hdpi" />
+                    </a>
+                </li>
+
+                <li id="mdpi" class="pull-left animated">
+                    <a href="/downloads/{{ hash }}_mdpi.zip">
+                        <span>MDPI</span>
+                        <img src="/images/circle.png" alt="mdpi" />
+                    </a>
+                </li>
+
+                <li id="ldpi" class="pull-left animated">
+                    <a href="/downloads/{{ hash }}_ldpi.zip">
+                        <span>LDPI</span>
+                        <img src="/images/circle.png" alt="ldpi" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <small>&copy;2013 Javier Martínez Fernández</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

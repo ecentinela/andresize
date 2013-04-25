@@ -1,0 +1,9 @@
+{
+  "name": "bluecarlocator.local",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "~2.3.1",
+    "blueimp-file-upload": "~7.4.1",
+    "animate.css": "latest"
+  }
+}
