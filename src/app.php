@@ -213,7 +213,7 @@ $app->post(
                     ->save($file);
 
                 // add it to the zip
-                $zip->addFile($file);
+                $zip->addFile($file, '/'.$image->getFilename());
             }
 
             // close zip
