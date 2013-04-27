@@ -1,4 +1,41 @@
 $ ->
+    # get upload button
+    $button = $('#fileinput-button')
+
+    # get progress
+    $progress = $('#progress')
+
+    # get bar
+    $bar = $progress.find 'div'
+
+    # get downloads
+    $xhdpi = $('#xhdpi')
+    $hdpi = $('#hdpi')
+    $mdpi = $('#mdpi')
+    $ldpi = $('#ldpi')
+
+    # get body
+    $body = $('body')
+
+    # get document
+    $document = $(document)
+
+    # detect drag & drop with file
+    $document.bind 'dragover', (e) ->
+        e.preventDefault();
+
+        $body.addClass 'drop'
+
+    $document.bind 'dragleave', (e) ->
+        e.preventDefault();
+
+        $body.removeClass 'drop'
+
+    $document.bind 'drop', (e) ->
+        e.preventDefault();
+
+        $body.removeClass 'drop'
+
     # upload progress value
     uploadProgress = 0
 
@@ -72,18 +109,3 @@ $ ->
 
             # show error
             alert 'error'
-
-    # get upload button
-    $button = $('#fileinput-button')
-
-    # get progress
-    $progress = $('#progress')
-
-    # get bar
-    $bar = $progress.find 'div'
-
-    # get downloads
-    $xhdpi = $('#xhdpi')
-    $hdpi = $('#hdpi')
-    $mdpi = $('#mdpi')
-    $ldpi = $('#ldpi')
