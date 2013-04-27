@@ -213,7 +213,7 @@ $app->post(
                     ->save($file);
 
                 // add it to the zip
-                $zip->addFile($file, '/'.$image->getFilename());
+                $zip->addFile($file, '/drawable-'.$version.'/'.$image->getFilename());
             }
 
             // close zip
