@@ -14,6 +14,11 @@ if ($app['debug']) {
     $app->register(new Whoops\Provider\Silex\WhoopsServiceProvider);
 }
 
+// register session
+$app->register(
+    new Silex\Provider\SessionServiceProvider()
+);
+
 // register twig
 $app->register(
     new Silex\Provider\TwigServiceProvider(),
@@ -36,14 +41,20 @@ $app['translator.domains'] = array(
             'resize_your_images' => 'Resize the images',
             'upload_a_file'      => 'Upload or drop a zip file containing the images <b>xhdpi</b> of your Android project.',
             'wait_for_downloads' => 'After some seconds, a link with a download for <b>hdpi</b>, <b>mdpi</b> and <b>ldpi</b> versions will appear.',
-            'select_zip_file'    => 'Click here to select a <b>ZIP</b> file'
+            'select_zip_file'    => 'Click here to select a <b>ZIP</b> file',
+            'donate'             => 'If you found the tool is useful to you, please, consider making a small donation :)',
+            'paypal_button'      => 'PayPal, the fastest and most secure way to pay online.',
+            'thank_you'          => 'Thank you for your donation.'
         ),
         'es' => array(
             'title'              => 'Image Resizer for Android',
             'resize_your_images' => 'Redimensiona las imágenes',
             'upload_a_file'      => 'Sube o arrastra un archivo zip que contenga las imágenes <b>xhdpi</b> de tu proyecto Android.',
             'wait_for_downloads' => 'Después de unos segundos, aparecerán los enlaces de descarga para las versiones <b>hdpi</b>, <b>mdpi</b> y <b>ldpi</b>.',
-            'select_zip_file'    => 'Pincha aqui para seleccionar el archivo <b>ZIP</b>'
+            'select_zip_file'    => 'Pincha aqui para seleccionar el archivo <b>ZIP</b>',
+            'donate'             => 'Si la herramienta te es útil, por favor, considera hacer una pequeña donación :)',
+            'paypal_button'      => 'PayPal, la forma más segura y rápida de pagar en línea.',
+            'thank_you'          => 'Gracias por tu donación.'
         )
     )
 );
@@ -123,7 +134,7 @@ $app->get(
             )
         );
     }
-);
+)->assert('_locale', '(en|es)');
 
 $app->post(
     '/upload/{hash}',
@@ -251,6 +262,19 @@ $app->get(
                 'ldpi'  => file_exists(__DIR__.'/../web/downloads/'.$hash.'_ldpi.zip')
             )
         );
+    }
+);
+
+$app->get(
+    '/thanks',
+    function () use ($app) {
+        $app['session']->start();
+        $app['session']->getFlashBag()->set(
+            'info',
+            $app['translator']->trans('thank_you')
+        );
+
+        return $app->redirect('/');
     }
 );
 

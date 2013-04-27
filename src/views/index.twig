@@ -18,7 +18,7 @@
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 
-    {% javascripts filter="closure" output="js/vendor.js"
+    {% javascripts output="js/vendor.js"
         "components/jquery/jquery.js"
         "components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"
         "components/blueimp-file-upload/js/jquery.fileupload.js"
@@ -31,6 +31,10 @@
     {% endjavascripts %}
 </head>
 <body>
+    <a id="github" href="https://github.com/ecentinela/android-image-resizer">
+        <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+    </a>
+
     <header>
         <div class="container">
             <div class="row">
@@ -38,6 +42,23 @@
                     <div id="logo">
                         <h2 class="pull-left">Image Resizer</h2>
                         <h4 class="pull-left">For Android</h4>
+                    </div>
+                </div>
+
+                <div class="pull-right">
+                    <div class="alert alert-success">
+                        {% if app.session.flashbag.has("info") %}
+                            {{ app.session.flashbag.get("info")[0] }}
+                        {% else %}
+                            <p>{{ "donate" | trans }}</p>
+
+                            <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="PR635FG6FP48N">
+                                <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="{{ "paypal_button" | trans }}">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -60,7 +81,7 @@
                     </span>
 
                     <div id="progress" class="progress progress-striped active hide">
-                        <div class="bar bar-success" style="width:50%"></div>
+                        <div class="bar bar-success"></div>
                     </div>
                 </div>
             </div>
