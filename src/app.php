@@ -7,7 +7,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 $app = new Silex\Application();
 
 // enable debug
-$app['debug'] = false;
+$app['debug'] = true;
 
 // register whoops
 if ($app['debug']) {
@@ -93,8 +93,11 @@ $app['assetic.filter_manager']->set('coffee', $coffee);
 $app->get(
     '/',
     function (Symfony\Component\HttpFoundation\Request $request) use ($app) {
+        // get preferred language
+        $lang = $request->getPreferredLanguage() ?: 'en_US';
+
         // redirect to preferred language
-        $locale = substr($request->getPreferredLanguage(), 0, 2);
+        $locale = substr($lang, 0, 2);
 
         // check language is valid
         $valids = array_keys($app['translator.domains']['messages']);
