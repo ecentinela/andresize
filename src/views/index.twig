@@ -44,23 +44,6 @@
                         <h4 class="pull-left">For Android</h4>
                     </div>
                 </div>
-
-                <div class="pull-right">
-                    <div class="alert alert-success">
-                        {% if app.session.flashbag.has("info") %}
-                            {{ app.session.flashbag.get("info")[0] }}
-                        {% else %}
-                            <p>{{ "donate" | trans }}</p>
-
-                            <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                <input type="hidden" name="cmd" value="_s-xclick">
-                                <input type="hidden" name="hosted_button_id" value="PR635FG6FP48N">
-                                <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="{{ "paypal_button" | trans }}">
-                                <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
-                            </form>
-                        {% endif %}
-                    </div>
-                </div>
             </div>
 
             <div class="row">
@@ -82,6 +65,27 @@
 
                     <div id="progress" class="progress progress-striped active hide">
                         <div class="bar bar-success"></div>
+                    </div>
+
+                    <div class="alert alert-success clearfix">
+                        {% if app.session.flashbag.has("info") %}
+                            <div class="span5">
+                                <p>{{ app.session.flashbag.get("info")[0] }}</p>
+                            </div>
+                        {% else %}
+                            <div class="span5">
+                                <p>{{ "donate" | trans }}</p>
+                            </div>
+
+                            <div class="span2">
+                                <form id="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="PR635FG6FP48N">
+                                    <input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="{{ "paypal_button" | trans }}">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
