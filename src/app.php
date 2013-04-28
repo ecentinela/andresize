@@ -38,6 +38,7 @@ $app['translator.domains'] = array(
     'messages' => array(
         'en' => array(
             'title'              => 'Image Resizer for Android',
+            'descriptions'       => 'Resize your android project image resources easily',
             'resize_your_images' => 'Resize the images',
             'upload_a_file'      => 'Upload or drop a zip file containing the images <b>xhdpi</b> of your Android project.',
             'wait_for_downloads' => 'After some seconds, a link with a download for <b>hdpi</b>, <b>mdpi</b> and <b>ldpi</b> versions will appear.',
@@ -48,6 +49,7 @@ $app['translator.domains'] = array(
         ),
         'es' => array(
             'title'              => 'Image Resizer for Android',
+            'descriptions'       => 'Redimensiona las imágenes de tu proyecto Android fácilmente',
             'resize_your_images' => 'Redimensiona las imágenes',
             'upload_a_file'      => 'Sube o arrastra un archivo zip que contenga las imágenes <b>xhdpi</b> de tu proyecto Android.',
             'wait_for_downloads' => 'Después de unos segundos, aparecerán los enlaces de descarga para las versiones <b>hdpi</b>, <b>mdpi</b> y <b>ldpi</b>.',
