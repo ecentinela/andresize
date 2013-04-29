@@ -116,7 +116,7 @@ $app->get(
         $valids = array_keys($app['translator.domains']['messages']);
 
         if (!array_key_exists($locale, $valids)) {
-            $locale = 'es';
+            $locale = 'en';
         }
 
         // redirect to valid language
