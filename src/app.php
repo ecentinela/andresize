@@ -113,9 +113,7 @@ $app->get(
         $locale = substr($lang, 0, 2);
 
         // check language is valid
-        $valids = array_keys($app['translator.domains']['messages']);
-
-        if (!array_key_exists($locale, $valids)) {
+        if (!array_key_exists($locale, $app['translator.domains']['messages'])) {
             $locale = 'en';
         }
 
